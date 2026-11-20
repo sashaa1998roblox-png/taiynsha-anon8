@@ -3122,7 +3122,7 @@ function showAccountTab(tab){
  if(!login)setTimeout(()=>document.getElementById('regNick')?.focus(),60);
 }
 function startAccountRegistration(){showAccountTab('register');document.getElementById('accountModal').classList.add('show')}
-function openProfileEditor(){
+function openProfileManager(){
  const p=currentProfile();
  if(!p){openAccountModal();return}
  editingProfileId=null;
@@ -3147,12 +3147,6 @@ async function hashAccountPassword(password){
  const bytes=new TextEncoder().encode(password);
  const digest=await crypto.subtle.digest('SHA-256',bytes);
  return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-// Переход в профиль: собственный профиль использует тот же экран, что и чужие.
-function openProfileManager(){
- const p=currentProfile();
- if(!p){openAccountModal();return}
- viewProfile(p.id);
 }
 async function saveProfile(){
  let nick=document.getElementById('profileNick').value.trim();
@@ -3180,7 +3174,7 @@ if(editingProfileId){
   p.nick=nick;p.avatar='';p.bio=bio;
   if((p.username||'').toLowerCase()!==username){p.username=username;p.usernameChangedAt=Date.now()}
   if(passwordHash)p.passwordHash=passwordHash;
-  currentProfileId=p.id;save();updateProfileButton();render();openProfileEditor();toast('Профиль обновлён');
+  currentProfileId=p.id;save();updateProfileButton();render();openProfileManager();toast('Профиль обновлён');
  }else{
   if(currentProfile()){toast('Уже есть аккаунт. Сначала удали его, чтобы создать новый.');return}
   let p={id:'u'+Date.now()+Math.random().toString(16).slice(2,7),nick,username,passwordHash,avatar:'',bio,createdAt:Date.now(),usernameChangedAt:Date.now(),following:[],captchaVerified:false};
@@ -3343,7 +3337,7 @@ async function publish(){
  if(postType==='text'&&(!title||!text)){toast('Заполни заголовок и текст');return}
  if(postType==='poll'){let question=document.getElementById('pollQuestion').value.trim(),options=[...document.querySelectorAll('.poll-option-input')].map(x=>x.value.trim()).filter(Boolean);if(!question){toast('Введи вопрос опроса');return}if(options.length<2){toast('Добавь минимум 2 варианта ответа');return}if(options.length>6){toast('Максимум 6 вариантов');return}title=question;text='';}
  if(!document.getElementById('agree').checked){toast('Подтверди согласие с правилами');return}
- let post={id:'p'+Date.now()+Math.random().toString(16).slice(2,6),title,text,date:Date.now(),likes:0,comments:[]};if(postType==='poll'){let opts=[...document.querySelectorAll('.poll-option-input')].map(x=>x.value.trim()).filter(Boolean);post.poll={question:title,options:opts,votes:{},voters:{}}}
+ let post={id:'p'+Date.now()+Math.random().toString(16).slice(2,6),title,text,date:Date.now(),likes:0,comments:[]};if(author)post.authorId=author.id;if(postType==='poll'){let opts=[...document.querySelectorAll('.poll-option-input')].map(x=>x.value.trim()).filter(Boolean);post.poll={question:title,options:opts,votes:{},voters:{}}}
  const publishButton=document.querySelector('#postModal .compose-submit');
  publishingPost=true;if(publishButton){publishButton.disabled=true;publishButton.textContent='Публикуем…'}
  try{
@@ -3613,7 +3607,7 @@ function openFollowList(profileId,kind){
 }
 function pfSwitchTab(btn,name){const m=document.getElementById('viewProfileContent');m.querySelectorAll('.pf-tab').forEach(b=>b.classList.toggle('on',b===btn));m.querySelectorAll('.pf-pane').forEach(p=>p.hidden=p.dataset.pane!==name)}
 function pfOpenPost(id){closeModal('viewProfileModal');setTimeout(()=>{const el=document.getElementById('post-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.animate([{boxShadow:'0 0 0 3px #9b7cff'},{boxShadow:'0 0 0 0 #9b7cff00'}],{duration:1600})}},120)}
-function pfEdit(){closeModal('viewProfileModal');openProfileEditor()}
+function pfEdit(){closeModal('viewProfileModal');openProfileManager()}
 function pfCopy(u){const t='@'+u;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Юзернейм скопирован: '+t)).catch(()=>toast(t))}
 function viewProfile(id){
  const p=profileById(id);if(!p)return;
@@ -3658,7 +3652,7 @@ function viewProfile(id){
  }
  document.addEventListener('input',e=>{if(/^profile(Nick|Username|Bio)$/.test(e.target.id))upd()});
  document.addEventListener('click',e=>{if(e.target.closest('.avatar-choice,#avatarPicker'))setTimeout(upd,0)});
- const o=window.openProfileEditor;window.openProfileEditor=function(){o.apply(this,arguments);upd()};
+ const o=window.openProfileManager;window.openProfileManager=function(){o.apply(this,arguments);upd()};
  /* единая синхронизация активного раздела на ПК и телефоне */
  const mobileNav=[...document.querySelectorAll('.mobile-dock a')];
  const desktopNav=[...document.querySelectorAll('.desktop-quickbar a')];
@@ -3721,12 +3715,11 @@ function pfSelfView(p){
  window.viewProfile=function(id){
   const p=profileById(id);if(!p)return;
   const box=document.getElementById('viewProfileContent');box.dataset.pid=id;
-  // Свой и чужой профиль открываются в одном и том же модальном интерфейсе.
-  // v9 уже сам подставляет правильные действия: «Редактировать» для себя и «Подписаться» для других.
-  v9(id);
-  const a=box.querySelector('.pf-avatar');
-  if(p.photo&&a){a.classList.add('has-photo');a.style.backgroundImage=`url('${p.photo}')`;a.textContent=''}
-  const u=box.querySelector('.pf-user');if(u){const[c,t]=pfStatus(p);u.insertAdjacentHTML('afterend',`<div class="pf-status ${c}">${t}</div>`)}
+  const me=currentProfile();
+  if(me&&me.id===id){pfSelfView(p)}
+  else{v9(id);const a=box.querySelector('.pf-avatar');
+   if(p.photo&&a){a.classList.add('has-photo');a.style.backgroundImage=`url('${p.photo}')`;a.textContent=''}
+   const u=box.querySelector('.pf-user');if(u){const[c,t]=pfStatus(p);u.insertAdjacentHTML('afterend',`<div class="pf-status ${c}">${t}</div>`)}}
   document.getElementById('viewProfileModal').classList.add('show');
  };
  /* аватарки с фото в ленте */

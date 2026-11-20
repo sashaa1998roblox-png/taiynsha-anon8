@@ -224,8 +224,9 @@ export default async (request) => {
         if (!prev) {
           // Не позволяем старой вкладке восстановить публикацию после админского удаления.
           if (state.deletedPostIds.includes(next.id)) continue;
-          // New posts are accepted; author IDs are only trusted when they match a verified account.
-          if (prof && acc) next.authorId = acc.id;
+          // Only attribute a post when the client explicitly selected profile mode
+          // and the supplied author ID matches the verified account. Otherwise keep it anonymous.
+          if (acc && String(next.authorId || "") === String(acc.id)) next.authorId = acc.id;
           else delete next.authorId;
           merged.unshift(next);
           continue;
@@ -272,7 +273,7 @@ export default async (request) => {
     }
     const newPost = { id, title: poll ? poll.question : title, text: poll ? "" : text, date: Date.now(), likes: 0, views: 0, comments: [] };
     if (poll) newPost.poll = poll;
-    if (verifiedAccount) newPost.authorId = verifiedAccount.id;
+    if (verifiedAccount && String(raw.authorId || '') === String(verifiedAccount.id)) newPost.authorId = verifiedAccount.id;
     const out = await mutate(store, (state) => {
       if (state.posts.some((p) => p.id === id) || state.deletedPostIds.includes(id)) return { error: "post_exists", status: 409 };
       const limited = consumePostSlots(state, 1);
