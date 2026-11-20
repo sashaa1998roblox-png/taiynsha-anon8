@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071a12">
+<title>Политика конфиденциальности — Тайынша Анонимно</title>
+<style>
+:root{--soft:#c2b2ff;--bg:#0d0d14;--panel:#151520;--panel2:#1b1b29;--line:#29293a;--text:#f4f3fa;--muted:#9999ad;--accent:#9b7cff;--accent2:#6d56d9;--good:#65d6a4;--danger:#ff7185;--shadow:0 18px 55px #0005}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 12% 0%,#32225b55,transparent 34%),radial-gradient(ellipse at 90% 20%,#222d5550,transparent 28%),var(--bg);color:var(--text);font:15px/1.65 Inter,"Segoe UI",Arial,sans-serif;min-height:100vh}
+a{color:var(--soft)}
+.wrap{max-width:860px;margin:auto;padding:0 22px}
+
+header{position:sticky;top:0;z-index:10;background:#0d0d14d9;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12}
+.top{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 60%,white),#6d56d9);display:grid;place-items:center;font-size:21px;box-shadow:0 7px 25px color-mix(in srgb,var(--accent2) 35%,transparent)}
+.brand strong{font-size:17px;letter-spacing:.2px}
+.brand small{display:block;color:var(--muted);font-size:11px;margin-top:-2px}
+.btn{border:0;border-radius:12px;padding:9px 14px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));font-weight:700;font-size:13px;text-decoration:none;box-shadow:0 7px 22px color-mix(in srgb,var(--accent2) 25%,transparent);transition:.2s;display:inline-block}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+
+.hero{padding:46px 0 20px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--soft);background:color-mix(in srgb,var(--accent) 10%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);padding:7px 11px;border-radius:30px;font-size:12px;font-weight:700}
+.dot{width:7px;height:7px;background:var(--good);border-radius:50%;box-shadow:0 0 12px var(--good)}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.08;letter-spacing:-1.6px;margin:18px 0 12px}
+.grad{background:linear-gradient(100deg,#fff,var(--soft) 55%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:16px;margin:0 0 6px;max-width:640px}
+.date{color:var(--muted);font-size:12px}
+
+.summary{margin:26px 0 8px;padding:20px 22px;border:1px solid #65d6a435;background:#65d6a410;border-radius:18px}
+.summary b{color:var(--good)}
+.summary ul{margin:10px 0 0;padding-left:20px}
+.summary li{margin:4px 0}
+
+.toc{margin:22px 0;padding:18px 22px;border:1px solid var(--line);background:var(--panel);border-radius:18px}
+.toc b{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+.toc ol{margin:10px 0 0;padding-left:20px;columns:2;column-gap:30px}
+.toc li{margin:3px 0;break-inside:avoid}
+.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}
+
+section.block{margin:14px 0;padding:24px 26px;border:1px solid #ffffff14;background:linear-gradient(145deg,#1d1a2e,#151520 70%);border-radius:20px;scroll-margin-top:90px}
+section.block h2{margin:0 0 12px;font-size:20px;letter-spacing:-.3px;display:flex;gap:10px;align-items:center}
+section.block h2 i{font-style:normal;font-size:12px;font-weight:800;color:var(--soft);background:color-mix(in srgb,var(--accent) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);border-radius:8px;padding:3px 8px}
+section.block p{margin:0 0 10px;color:#d6d4e4}
+section.block ul{margin:6px 0 10px;padding-left:20px;color:#d6d4e4}
+section.block li{margin:5px 0}
+code{background:var(--panel2);border:1px solid var(--line);padding:1px 6px;border-radius:6px;font:12px ui-monospace,Menlo,Consolas,monospace;color:var(--soft)}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:13.5px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+tr:last-child td{border-bottom:0}
+
+.warn{margin:10px 0 0;padding:14px 16px;border:1px solid #ff718535;background:#ff718510;border-radius:14px;color:#ffc2cb}
+
+footer{border-top:1px solid #ffffff12;margin-top:34px;padding:25px 0 40px;color:var(--muted);font-size:12px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.btn{white-space:nowrap}.brand strong{white-space:nowrap}
+@media(max-width:640px){.brand strong{font-size:14px}.logo{width:36px;height:36px;border-radius:12px;font-size:18px}.btn{padding:8px 12px}.toc ol{columns:1}section.block{padding:20px 18px}.brand small{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <a class="brand" id="brandLink" href="/"><span class="logo">◈</span><span><strong>ТАЙЫНША АНОНИМНО</strong><small>Городская анонимная лента</small></span></a>
+    <a class="btn" id="homeBtn" href="/">← На сайт</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="eyebrow"><span class="dot"></span>Документ</span>
+    <h1><span class="grad">Политика конфиденциальности</span></h1>
+    <p class="lead">Простыми словами: какие данные мы храним, зачем они нужны и как ими управлять.</p>
+    <div class="date">Последнее обновление: 21 ноября 2026</div>
+  </div>
+
+  <div class="summary">
+    <b>Коротко</b>
+    <ul>
+      <li>Для регистрации нужны только юзернейм, имя и пароль. <b>Почта и номер телефона не требуются.</b></li>
+      <li>Пароль хранится только в виде необратимого хэша — мы не можем его прочитать.</li>
+      <li>Рекламы, трекеров и аналитики на сайте нет.</li>
+      <li>Свой аккаунт можно удалить самостоятельно в настройках профиля.</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="Содержание">
+    <b>Содержание</b>
+    <ol>
+      <li><a href="#s1">Общие положения</a></li>
+      <li><a href="#s2">Какие данные мы собираем</a></li>
+      <li><a href="#s3">Зачем нужны данные</a></li>
+      <li><a href="#s4">Что видят другие пользователи</a></li>
+      <li><a href="#s5">Хранение в вашем браузере</a></li>
+      <li><a href="#s6">Пароли и безопасность</a></li>
+      <li><a href="#s7">Сроки хранения и удаление</a></li>
+      <li><a href="#s8">Передача данных третьим лицам</a></li>
+      <li><a href="#s9">Ваши права</a></li>
+      <li><a href="#s10">Дети</a></li>
+      <li><a href="#s11">Изменения политики</a></li>
+      <li><a href="#s12">Связь</a></li>
+    </ol>
+  </nav>
+
+  <section class="block" id="s1">
+    <h2><i>01</i>Общие положения</h2>
+    <p>«Тайынша Анонимно» — независимый концепт городской анонимной ленты. Эта политика описывает, как сайт обращается с информацией о пользователях. Пользуясь сайтом, вы соглашаетесь с её условиями.</p>
+    <p>Мы стараемся собирать минимум данных: ровно столько, сколько нужно, чтобы работали профили, публикации, комментарии и подписки.</p>
+  </section>
+
+  <section class="block" id="s2">
+    <h2><i>02</i>Какие данные мы собираем</h2>
+    <div class="tw"><table>
+      <thead><tr><th>Данные</th><th>Когда появляются</th><th>Обязательны</th></tr></thead>
+      <tbody>
+        <tr><td>Юзернейм (латиница, цифры, _)</td><td>При регистрации</td><td>Да</td></tr>
+        <tr><td>Отображаемое имя</td><td>При регистрации</td><td>Да</td></tr>
+        <tr><td>Пароль (хранится только как хэш)</td><td>При регистрации</td><td>Да</td></tr>
+        <tr><td>Описание профиля (до 180 символов)</td><td>По желанию</td><td>Нет</td></tr>
+        <tr><td>Фото профиля</td><td>Если вы его загрузили</td><td>Нет</td></tr>
+        <tr><td>Список подписок</td><td>Когда вы подписываетесь на профили</td><td>Нет</td></tr>
+        <tr><td>Публикации, комментарии, реакции, голоса в опросах, жалобы</td><td>Когда вы ими пользуетесь</td><td>Нет</td></tr>
+        <tr><td>Дата создания аккаунта, служебные данные сессий и попыток входа</td><td>Автоматически</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top:12px">Мы <b>не запрашиваем</b> адрес электронной почты, номер телефона, настоящее имя, документы, точное местоположение, доступ к камере или микрофону.</p>
+  </section>
+
+  <section class="block" id="s3">
+    <h2><i>03</i>Зачем нужны данные</h2>
+    <ul>
+      <li>создание и работа вашего профиля и входа в аккаунт;</li>
+      <li>показ публикаций, комментариев и профилей в ленте;</li>
+      <li>работа подписок, счётчиков просмотров, реакций и опросов;</li>
+      <li>защита от злоупотреблений: блокировка после нескольких неудачных попыток входа, проверка «не бот», рассмотрение жалоб;</li>
+      <li>поддержание стабильной работы и безопасности сайта.</li>
+    </ul>
+    <p>Мы не используем данные для рекламы, профилирования и не продаём их.</p>
+  </section>
+
+  <section class="block" id="s4">
+    <h2><i>04</i>Что видят другие пользователи</h2>
+    <p>Публично доступны: ваш юзернейм, имя, описание профиля, фото (если есть), дата создания профиля, а также ваши публикации и комментарии.</p>
+    <div class="warn"><b>Будьте осторожны.</b> Всё, что вы публикуете в ленте, могут увидеть другие люди. Не указывайте в постах, комментариях и описании профиля адрес, телефон, документы и другую личную информацию — свою или чужую. Пароль и сессия никому не показываются.</div>
+  </section>
+
+  <section class="block" id="s5">
+    <h2><i>05</i>Хранение в вашем браузере</h2>
+    <p>Сайт не использует рекламные и аналитические cookie. Для работы он сохраняет данные в локальном хранилище браузера (<code>localStorage</code>):</p>
+    <ul>
+      <li>токен вашей сессии, чтобы вам не приходилось входить заново при каждом визите;</li>
+      <li>настройки сайта, список скрытых вами публикаций;</li>
+      <li>отметки о просмотренных публикациях и ваших голосах в опросах;</li>
+      <li>отметки о жалобах, отправленных с этого устройства;</li>
+      <li>локальные копии профилей и публикаций для быстрой загрузки.</li>
+    </ul>
+    <p>Эти данные остаются на вашем устройстве. Вы можете удалить их в любой момент, очистив данные сайта в настройках браузера — после этого вам придётся войти в аккаунт заново.</p>
+  </section>
+
+  <section class="block" id="s6">
+    <h2><i>06</i>Пароли и безопасность</h2>
+    <ul>
+      <li>Пароль сохраняется только в виде односторонней криптографической хэш-функции с индивидуальной солью. Восстановить исходный пароль невозможно — поэтому мы не сможем «напомнить» его, если вы забудете.</li>
+      <li>На сервере хранятся лишь хэши токенов сессий, а не сами токены. Старые сессии автоматически перестают действовать, а при смене пароля остальные устройства выходят из аккаунта.</li>
+      <li>После нескольких неверных вводов пароля вход временно блокируется.</li>
+      <li>Соединение с сайтом защищено HTTPS, на сайте включены защитные заголовки браузера.</li>
+    </ul>
+    <p>Ни одна система не защищена на 100%. Используйте уникальный пароль, который не применяете на других сайтах.</p>
+  </section>
+
+  <section class="block" id="s7">
+    <h2><i>07</i>Сроки хранения и удаление</h2>
+    <ul>
+      <li>Данные аккаунта хранятся, пока существует ваш аккаунт.</li>
+      <li>Вы можете удалить аккаунт самостоятельно в настройках профиля — при этом удаляются данные аккаунта и ваш профиль в ленте.</li>
+      <li>Сессии действуют ограниченное время (до 90 дней), затем истекают.</li>
+      <li>Публикации и комментарии могут быть удалены вами или модерацией, например при нарушении правил или по жалобам.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="s8">
+    <h2><i>08</i>Передача данных третьим лицам</h2>
+    <p>Мы не продаём и не передаём ваши данные рекламным компаниям. Сайт размещён на платформе <b>Netlify</b>, которая обеспечивает хостинг и хранение данных. Как технический провайдер, она может обрабатывать служебную информацию о запросах (например, IP-адрес) в соответствии со своей политикой конфиденциальности.</p>
+    <p>Данные могут быть раскрыты только если этого требует закон или для защиты пользователей от явных нарушений.</p>
+  </section>
+
+  <section class="block" id="s9">
+    <h2><i>09</i>Ваши права</h2>
+    <ul>
+      <li>изменить имя, описание, фото и пароль в настройках профиля;</li>
+      <li>изменить юзернейм (не чаще раза в сутки);</li>
+      <li>удалить свой аккаунт;</li>
+      <li>очистить локальные данные в браузере;</li>
+      <li>обратиться с вопросом о ваших данных (см. раздел «Связь»).</li>
+    </ul>
+  </section>
+
+  <section class="block" id="s10">
+    <h2><i>10</i>Дети</h2>
+    <p>Сайт не предназначен для детей младшего возраста. Если вы несовершеннолетний, пользуйтесь им только с согласия родителей или законных представителей и никогда не публикуйте личные данные.</p>
+  </section>
+
+  <section class="block" id="s11">
+    <h2><i>11</i>Изменения политики</h2>
+    <p>Мы можем обновлять эту политику при изменении возможностей сайта. Актуальная версия всегда доступна на этой странице, дата последнего обновления указана вверху.</p>
+  </section>
+
+  <section class="block" id="s12">
+    <h2><i>12</i>Связь</h2>
+    <p>Если у вас есть вопрос о ваших данных или вы нашли в ленте свою личную информацию, воспользуйтесь кнопкой жалобы рядом с публикацией, комментарием или профилем — обращение попадёт к администрации сайта.</p>
+    <p><a id="homeLink2" href="/">← Вернуться на сайт</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot"><span>◈ ТАЙЫНША АНОНИМНО · Независимый концепт городского сообщества</span><span>Публикуй ответственно · Береги личные данные</span></div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  // Цветовая тема сайта (та же, что выбрана в настройках)
+  try {
+    var t = (JSON.parse(localStorage.getItem('taiynsha_site_settings') || '{}') || {}).theme;
+    var T = {
+      green:{a:'#34d399',b:'#059669',s:'#a7f3d0'},
+      blue:{a:'#38bdf8',b:'#2563eb',s:'#bae6fd'},
+      rose:{a:'#fb7185',b:'#be185d',s:'#fecdd3'}
+    }[t];
+    if (T) { var r = document.documentElement.style; r.setProperty('--accent',T.a); r.setProperty('--accent2',T.b); r.setProperty('--soft',T.s); }
+  } catch (e) {}
+
+  // На Netlify главная — "/", при открытии файла с компьютера (file://) — index.html
+  var home = location.protocol === 'file:' ? 'index.html' : '/';
+  ['brandLink','homeBtn','homeLink2'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.setAttribute('href', home);
+  });
+})();
+</script>
+</body>
+</html>
